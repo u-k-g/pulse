@@ -9,10 +9,19 @@
 !.cargo/config.toml
 !Cargo.toml
 !Cargo.lock
+!justfile
+
+# FORMATTERS
+!.rustfmt.toml
+!.taplo.toml
+
+# LINTERS
+!.clippy.toml
 
 # SOURCES
 !build.rs
 !src/
+!tools/
 
 # LINKER
 !memory.x
