@@ -1,0 +1,18 @@
+*
+!.gitignore
+
+# DOCUMENTATION
+!*.md
+
+# BUILD SYSTEMS
+!.cargo/
+!.cargo/config.toml
+!Cargo.toml
+!Cargo.lock
+
+# SOURCES
+!build.rs
+!src/
+
+# LINKER
+!memory.x

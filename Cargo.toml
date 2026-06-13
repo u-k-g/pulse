@@ -1,0 +1,26 @@
+[package]
+name = "pulse"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dependencies]
+embassy-executor = { version = "0.10.0", path = "../embassy/embassy-executor", features = ["platform-cortex-m", "executor-thread", "defmt"] }
+embassy-nrf = { version = "0.10.0", path = "../embassy/embassy-nrf", features = ["defmt", "nrf52840", "time-driver-rtc1", "gpiote", "unstable-pac", "time"] }
+
+cortex-m = { version = "0.7.6", features = ["inline-asm", "critical-section-single-core"] }
+cortex-m-rt = "0.7.0"
+defmt = "1.0.1"
+defmt-rtt = "1.0.0"
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+
+[profile.release]
+debug = 2
+lto = "fat"
+opt-level = "z"
+
+[package.metadata.embassy]
+build = [
+  { target = "thumbv7em-none-eabi", artifact-dir = "out" }
+]
