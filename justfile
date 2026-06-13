@@ -53,8 +53,16 @@ flash: build
             for attempt in {1..20}; do \
                 if cp "{{ app }}.uf2" "/Volumes/{{ volume }}/{{ uf2_name }}" 2>/dev/null; then \
                     sync; \
-                    echo "Flashed {{ app }}.uf2 to /Volumes/{{ volume }}"; \
-                    exit 0; \
+                    echo "Copied {{ app }}.uf2 to /Volumes/{{ volume }}, waiting for reboot."; \
+                    for reboot_attempt in {1..40}; do \
+                        if [[ ! -d "/Volumes/{{ volume }}" ]]; then \
+                            echo "Flashed {{ app }}.uf2 to /Volumes/{{ volume }}"; \
+                            exit 0; \
+                        fi; \
+                        sleep 0.25; \
+                    done; \
+                    echo "/Volumes/{{ volume }} is still mounted; the bootloader may not have accepted the UF2."; \
+                    exit 1; \
                 fi; \
                 sleep 0.25; \
             done; \

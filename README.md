@@ -1,25 +1,24 @@
-# pulse
+<h1 align="center">pulse!</h1>
 
-Minimal Embassy firmware for a nice!nano v2. It initializes the nRF52840, turns
-off the nice!nano external VCC rail with P0.13, then enters System OFF. The MCU
-stays off until reset is asserted with the reset button/RST pin or another
-hardware wake source.
+<p align="center">
+  Tiny Embassy firmware for the nice!nano v2.
+</p>
 
-## Build
+## Behavior
 
-```sh
-cargo build --release
-```
+On boot, `pulse` cuts external VCC with `P0.13`, waits briefly, then enters
+System OFF.
 
-## Flashing notes
-
-The project links at `0x26000` for the nice!nano's Adafruit nRF52 UF2 bootloader.
-To make a UF2 for drag-and-drop flashing, convert the release binary with the
-Adafruit UF2 family ID for nRF52840:
+## Commands
 
 ```sh
-cargo objcopy --release -- -O binary pulse.bin
-uf2conv.py pulse.bin -c -b 0x26000 -f 0xADA52840 -o pulse.uf2
+just f
 ```
 
-Then double-tap reset to mount the `NICENANO` drive and copy `pulse.uf2` to it.
+Builds, converts to UF2, waits for the `NICENANO` bootloader volume, and flashes.
+
+```sh
+just lint
+```
+
+Runs Clippy with warnings denied.

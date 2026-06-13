@@ -18,7 +18,6 @@ async fn main(spawner: Spawner) {
 
    power::set_system_off();
 
-   // SYSTEMOFF should not return, but park safely if hardware ever resumes here.
    #[expect(
       clippy::infinite_loop,
       reason = "park here if SYSTEMOFF unexpectedly returns"
