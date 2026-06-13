@@ -6,8 +6,8 @@
 
 ## Behavior
 
-On boot, `pulse` cuts external VCC with `P0.13`, waits briefly, then enters
-System OFF.
+On boot, `pulse` cuts external VCC with `P0.13`, blinks the blue LED in short
+bursts, then turns it off and enters System OFF.
 
 ## Commands
 
