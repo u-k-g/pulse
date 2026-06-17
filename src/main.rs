@@ -20,6 +20,9 @@ async fn main(spawner: Spawner) {
 
    // nice!nano v2: P0.13 high cuts power to the external VCC rail.
    let _external_vcc_off = Output::new(peripherals.P0_13, Level::High, OutputDrive::Standard);
+   // nice!nano v2 silkscreen labels 113 and 115 map to nRF GPIOs P1.13 and P1.15.
+   let _pin_113_high = Output::new(peripherals.P1_13, Level::High, OutputDrive::Standard);
+   let _pin_115_high = Output::new(peripherals.P1_15, Level::High, OutputDrive::Standard);
    let mut status_led = Output::new(peripherals.P0_15, Level::Low, OutputDrive::Standard);
 
    for _ in 0..BURSTS {
