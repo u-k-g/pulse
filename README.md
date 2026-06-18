@@ -6,9 +6,9 @@
 
 ## Behavior
 
-On boot, `pulse` cuts external VCC with `P0.13`, drives the nice!nano v2 pins
-labeled `113`/`115` (`P1.13`/`P1.15`) high, blinks the blue LED in short bursts,
-then turns it off and enters System OFF.
+On boot, `pulse` keeps external VCC enabled with `P0.13` high, drives the
+nice!nano v2 pins labeled `113`/`115` (`P1.13`/`P1.15`) high, blinks the blue
+LED in short bursts, then turns it off and enters System OFF.
 
 ## Commands
 
