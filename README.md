@@ -6,11 +6,12 @@
 
 ## Behavior
 
-On boot, `pulse` keeps external VCC enabled with `P0.13` high, drives DRV8833
-`IN1`/`IN3` high from nice!nano v2 pins labeled `113`/`022`
-(`P1.13`/`P0.22`), holds `IN2`/`IN4` low from pins labeled `115`/`024`
-(`P1.15`/`P0.24`), blinks the blue LED in short bursts, then turns it off and
-enters System OFF.
+On boot, `pulse` keeps external VCC enabled with `P0.13` high, then runs both
+DRV8833 motor channels through a repeated alarm cadence: five 80 ms pulses with
+40 ms gaps, followed by one 200 ms pulse. Pins labeled `113`/`022`
+(`P1.13`/`P0.22`) drive `IN1`/`IN3`; pins labeled `115`/`024`
+(`P1.15`/`P0.24`) hold `IN2`/`IN4` low. After the pattern, all DRV8833 inputs
+are low before entering System OFF.
 
 ## Commands
 
