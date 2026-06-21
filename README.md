@@ -9,7 +9,8 @@
 At build time, `pulse` compiles in the delay from the compiling machine's local
 time to the requested alarm time. On boot, it keeps external VCC enabled with
 `P0.13` high, waits for that delay, then runs both DRV8833 motor channels
-through the alarm cadence. Pins labeled `113`/`022` (`P1.13`/`P0.22`) drive
+through the roughly 10 second alarm cadence. Pins labeled `113`/`022`
+(`P1.13`/`P0.22`) drive
 `IN1`/`IN3`; pins labeled `115`/`024` (`P1.15`/`P0.24`) hold `IN2`/`IN4` low.
 After the pattern, all DRV8833 inputs are low before entering System OFF.
 

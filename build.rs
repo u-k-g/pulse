@@ -34,11 +34,12 @@ fn alarm_delay_seconds() -> u32 {
    let target_seconds = parse_time(&alarm_time, "ALARM_TIME");
    let now = non_empty_env("BUILD_ALARM_LOCAL_TIME").unwrap_or_else(current_local_time);
    let now_seconds = parse_time(&now, "BUILD_ALARM_LOCAL_TIME");
-   let delay = if target_seconds > now_seconds {
+   let raw_delay = if target_seconds > now_seconds {
       target_seconds - now_seconds
    } else {
       target_seconds + 24_u32 * 60_u32 * 60_u32 - now_seconds
    };
+   let delay = raw_delay.saturating_sub(1);
 
    println!("cargo:warning=Alarm target {alarm_time}, build time {now}; waiting {delay} seconds.");
 

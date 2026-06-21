@@ -11,7 +11,7 @@ use {defmt_rtt as _, panic_probe as _};
 
 include!(concat!(env!("OUT_DIR"), "/alarm_delay.rs"));
 
-const ALARM_REPEATS: u8 = 13;
+const ALARM_REPEATS: u8 = 21;
 const STUTTER_PULSES_PER_REPEAT: u8 = 5;
 const STUTTER_OFF_MS: u64 = 20;
 const STUTTER_ON_MS: u64 = 50;
