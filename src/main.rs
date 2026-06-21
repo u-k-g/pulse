@@ -11,9 +11,9 @@ use {defmt_rtt as _, panic_probe as _};
 const CYCLES_PER_MS_AT_64_MHZ: u32 = 64_000;
 const ALARM_REPEATS: u8 = 13;
 const STUTTER_PULSES_PER_REPEAT: u8 = 5;
-const STUTTER_ON_MS: u32 = 80;
-const STUTTER_OFF_MS: u32 = 40;
-const SUSTAINED_ON_MS: u32 = 200;
+const STUTTER_OFF_MS: u32 = 20;
+const STUTTER_ON_MS: u32 = 50;
+const SUSTAINED_PERIOD_MS: u32 = 120;
 
 #[embassy_executor::main]
 async fn main(spawner: Spawner) {
@@ -31,15 +31,15 @@ async fn main(spawner: Spawner) {
 
    for _ in 0..ALARM_REPEATS {
       for _ in 0..STUTTER_PULSES_PER_REPEAT {
-         motors_on(&mut drv_in1, &mut drv_in3);
-         delay_ms(STUTTER_ON_MS);
          motors_off(&mut drv_in1, &mut drv_in3);
          delay_ms(STUTTER_OFF_MS);
+         motors_on(&mut drv_in1, &mut drv_in3);
+         delay_ms(STUTTER_ON_MS);
       }
 
-      motors_on(&mut drv_in1, &mut drv_in3);
-      delay_ms(SUSTAINED_ON_MS);
       motors_off(&mut drv_in1, &mut drv_in3);
+      delay_ms(SUSTAINED_PERIOD_MS);
+      motors_on(&mut drv_in1, &mut drv_in3);
    }
 
    motors_off(&mut drv_in1, &mut drv_in3);

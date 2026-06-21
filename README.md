@@ -7,9 +7,9 @@
 ## Behavior
 
 On boot, `pulse` keeps external VCC enabled with `P0.13` high, then runs both
-DRV8833 motor channels through a repeated alarm cadence: five 80 ms pulses with
-40 ms gaps, followed by one 200 ms pulse. Pins labeled `113`/`022`
-(`P1.13`/`P0.22`) drive `IN1`/`IN3`; pins labeled `115`/`024`
+DRV8833 motor channels through an inverted alarm cadence: five 80 ms quiet gaps
+with 40 ms vibration pulses, followed by one 200 ms quiet gap. Pins labeled
+`113`/`022` (`P1.13`/`P0.22`) drive `IN1`/`IN3`; pins labeled `115`/`024`
 (`P1.15`/`P0.24`) hold `IN2`/`IN4` low. After the pattern, all DRV8833 inputs
 are low before entering System OFF.
 
