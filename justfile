@@ -31,8 +31,8 @@ fmt:
 lint: deps
     RUSTC="$(command -v rustc)" RUSTDOC="$(command -v rustdoc)" RUSTC_WORKSPACE_WRAPPER="$(command -v clippy-driver)" RUSTFLAGS="-D warnings" cargo check --release
 
-build: deps
-    cargo build --release
+build alarm_time="": deps
+    BUILD_ALARM_NOW="$(date +%s)" BUILD_ALARM_LOCAL_TIME="$(date +%H:%M:%S)" ALARM_TIME="{{ alarm_time }}" cargo build --release
     @objcopy() { \
         if command -v llvm-objcopy >/dev/null; then \
             llvm-objcopy "$@"; \
@@ -45,11 +45,13 @@ build: deps
     objcopy -O binary target/{{ target }}/release/{{ app }} {{ app }}.bin
     nu tools/uf2conv.nu {{ app }}.bin -b {{ bootloader_base }} -f {{ family_id }} -o {{ app }}.uf2
 
-flash: build
+flash alarm_time="": deps
     @echo "Double-tap reset on the nice!nano v2 to mount /Volumes/{{ volume }}."
     @for _ in {1..60}; do \
         if [[ -d "/Volumes/{{ volume }}" ]]; then \
-            echo "Found /Volumes/{{ volume }}, waiting for it to become writable."; \
+            echo "Found /Volumes/{{ volume }}, building alarm firmware."; \
+            just build "{{ alarm_time }}"; \
+            echo "Waiting for /Volumes/{{ volume }} to become writable."; \
             for attempt in {1..20}; do \
                 if cp "{{ app }}.uf2" "/Volumes/{{ volume }}/{{ uf2_name }}" 2>/dev/null; then \
                     sync; \

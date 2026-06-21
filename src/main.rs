@@ -1,19 +1,21 @@
 #![no_std]
 #![no_main]
 
-use cortex_m::asm::{delay, wfe};
+use cortex_m::asm::wfe;
 use embassy_executor::Spawner;
 use embassy_nrf::config::Config;
 use embassy_nrf::gpio::{Level, Output, OutputDrive};
 use embassy_nrf::power;
+use embassy_time::{Duration, block_for};
 use {defmt_rtt as _, panic_probe as _};
 
-const CYCLES_PER_MS_AT_64_MHZ: u32 = 64_000;
+include!(concat!(env!("OUT_DIR"), "/alarm_delay.rs"));
+
 const ALARM_REPEATS: u8 = 13;
 const STUTTER_PULSES_PER_REPEAT: u8 = 5;
-const STUTTER_OFF_MS: u32 = 20;
-const STUTTER_ON_MS: u32 = 50;
-const SUSTAINED_PERIOD_MS: u32 = 120;
+const STUTTER_OFF_MS: u64 = 20;
+const STUTTER_ON_MS: u64 = 50;
+const SUSTAINED_PERIOD_MS: u64 = 120;
 
 #[embassy_executor::main]
 async fn main(spawner: Spawner) {
@@ -28,6 +30,8 @@ async fn main(spawner: Spawner) {
    let _drv_in2 = Output::new(peripherals.P1_15, Level::Low, OutputDrive::Standard);
    let mut drv_in3 = Output::new(peripherals.P0_22, Level::Low, OutputDrive::Standard);
    let _drv_in4 = Output::new(peripherals.P0_24, Level::Low, OutputDrive::Standard);
+
+   block_for(Duration::from_secs(ALARM_DELAY_SECONDS));
 
    for _ in 0..ALARM_REPEATS {
       for _ in 0..STUTTER_PULSES_PER_REPEAT {
@@ -64,6 +68,6 @@ fn motors_off(drv_in1: &mut Output<'_>, drv_in3: &mut Output<'_>) {
    drv_in3.set_low();
 }
 
-fn delay_ms(ms: u32) {
-   delay(ms * CYCLES_PER_MS_AT_64_MHZ);
+fn delay_ms(ms: u64) {
+   block_for(Duration::from_millis(ms));
 }

@@ -227,6 +227,7 @@ dependencies = [
  "embassy-futures",
  "embassy-hal-internal",
  "embassy-sync",
+ "embassy-time",
  "embedded-hal 0.2.7",
  "embedded-hal 1.0.0",
  "embedded-hal-async",
@@ -291,6 +292,9 @@ dependencies = [
  "embassy-futures",
  "embassy-hal-internal",
  "embassy-sync",
+ "embassy-time",
+ "embassy-time-driver",
+ "embassy-time-queue-utils",
  "embassy-usb-driver",
  "embassy-usb-synopsys-otg",
  "embedded-hal 0.2.7",
@@ -326,6 +330,7 @@ version = "0.5.1"
 dependencies = [
  "cfg-if",
  "critical-section",
+ "defmt",
  "document-features",
  "embassy-time-driver",
  "embedded-hal 0.2.7",
@@ -339,6 +344,14 @@ name = "embassy-time-driver"
 version = "0.2.2"
 dependencies = [
  "document-features",
+]
+
+[[package]]
+name = "embassy-time-queue-utils"
+version = "0.3.2"
+dependencies = [
+ "embassy-executor-timer-queue",
+ "heapless",
 ]
 
 [[package]]
@@ -682,6 +695,7 @@ dependencies = [
  "defmt-rtt",
  "embassy-executor",
  "embassy-nrf",
+ "embassy-time",
  "panic-probe",
 ]
 

@@ -6,20 +6,22 @@
 
 ## Behavior
 
-On boot, `pulse` keeps external VCC enabled with `P0.13` high, then runs both
-DRV8833 motor channels through an inverted alarm cadence: five 80 ms quiet gaps
-with 40 ms vibration pulses, followed by one 200 ms quiet gap. Pins labeled
-`113`/`022` (`P1.13`/`P0.22`) drive `IN1`/`IN3`; pins labeled `115`/`024`
-(`P1.15`/`P0.24`) hold `IN2`/`IN4` low. After the pattern, all DRV8833 inputs
-are low before entering System OFF.
+At build time, `pulse` compiles in the delay from the compiling machine's local
+time to the requested alarm time. On boot, it keeps external VCC enabled with
+`P0.13` high, waits for that delay, then runs both DRV8833 motor channels
+through the alarm cadence. Pins labeled `113`/`022` (`P1.13`/`P0.22`) drive
+`IN1`/`IN3`; pins labeled `115`/`024` (`P1.15`/`P0.24`) hold `IN2`/`IN4` low.
+After the pattern, all DRV8833 inputs are low before entering System OFF.
 
 ## Commands
 
 ```sh
-just f
+just f 16:55
 ```
 
-Builds, converts to UF2, waits for the `NICENANO` bootloader volume, and flashes.
+Builds an alarm for the next local `16:55`, converts to UF2, waits for the
+`NICENANO` bootloader volume, and flashes. Running `just f` without a time builds
+an immediate alarm.
 
 ```sh
 just lint

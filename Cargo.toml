@@ -103,8 +103,11 @@ embassy-executor = { features = [
 embassy-nrf = { features = [
   "defmt",
   "nrf52840",
+  "time",
+  "time-driver-rtc1",
   "unstable-pac",
 ], path = "../embassy/embassy-nrf", version = "0.10.0" }
+embassy-time = { features = [ "defmt" ], path = "../embassy/embassy-time", version = "0.5.1" }
 
 cortex-m    = { features = [ "inline-asm", "critical-section-single-core" ], version = "0.7.6" }
 cortex-m-rt = "0.7.0"
