@@ -1,0 +1,21 @@
+{
+  "$schema": "https://cdn.jsdelivr.net/npm/@tscircuit/cli/types/tscircuit.config.schema.json",
+  "ignoredFiles": [
+    "node_modules/**",
+    "dist/**",
+    "target/**",
+    "pulse/**",
+    ".agents/**",
+    ".cargo/**",
+    ".jj/**",
+    "src/**",
+    "tools/**",
+    "Cargo.*",
+    "build.rs",
+    "justfile",
+    "memory.x",
+    "*.bin",
+    "*.uf2",
+    "pnpm-lock.yaml"
+  ]
+}

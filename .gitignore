@@ -10,6 +10,15 @@
 !Cargo.toml
 !Cargo.lock
 !justfile
+!.npmrc
+!package.json
+!package-lock.json
+!bun.lock
+!bun.lockb
+!yarn.lock
+!tsconfig.json
+!tsconfig.*.json
+!tscircuit.config.json
 
 # FORMATTERS
 !.rustfmt.toml
@@ -20,8 +29,16 @@
 
 # SOURCES
 !build.rs
+!*.js
+!*.jsx
+!*.mjs
+!*.cjs
+!*.ts
+!*.tsx
 !src/
 !tools/
+!.agents/
+!.agents/**
 
 # LINKER
 !memory.x

@@ -102,6 +102,7 @@ embassy-executor = { features = [
 ], path = "../embassy/embassy-executor", version = "0.10.0" }
 embassy-nrf = { features = [
   "defmt",
+  "nfc-pins-as-gpio",
   "nrf52840",
   "time",
   "time-driver-rtc1",
