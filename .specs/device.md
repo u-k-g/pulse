@@ -14,7 +14,7 @@ The device must:
 - Use BLE as the main phone communication path.
 - Be hackable: a developer must be able to modify firmware and upload it to the device.
 - Use a sealed, waterproof-friendly charging/programming interface instead of USB-C on the wearable body.
-- Use a magnetic pin/pad/contact charging interface, conceptually similar to a MagSafe-style snap-on cable or dock.
+- Use a premium magnetic pin/pad/contact charging interface inspired by MacBook MagSafe: a clean metal-faced cable/dock end with recessed spring contacts and protected alignment geometry.
 - Have one simple physical button.
 
 ## Product Priorities
@@ -22,6 +22,7 @@ The device must:
 - Wake-up strength matters more than refined haptic feel.
 - The wearable body should stay sealed and clean.
 - Charging should feel like a polished consumer product.
+- The magnetic charger should hide the spring contacts in a recessed, premium-feeling connector head rather than looking like exposed hobby pogo pins.
 - Firmware upload should be doable by a developer using the physical dock/cable path.
 - The device should stay simple and focused.
 
