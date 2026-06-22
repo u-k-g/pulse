@@ -39,6 +39,7 @@
 !tools/
 !.agents/
 !.agents/**
+!.specs/
 
 # LINKER
 !memory.x
