@@ -17,7 +17,7 @@ The first PCB to design is the wearable main board. It contains:
 - Button input.
 - Six exposed charge/program pads.
 
-Use a compact 4-layer PCB for the wearable main board. The exact outline is still open, but the first tscircuit version can use a simple placeholder rectangle until the mechanical outline is known.
+Use a compact 4-layer PCB for the final wearable main board. The exact outline is still open, and the current tscircuit version uses a simple placeholder rectangle until the mechanical outline is known.
 
 ### Charger / Programmer Dock
 
@@ -27,10 +27,10 @@ The wearable side should provide the mating exposed contacts/pads. The charger-s
 
 There are two charger/dock variants:
 
-- Basic charger: uses only `5V_CHG` and `GND`.
+- Basic charger: uses only `V5_CHG` and `GND`.
 - Developer/programmer dock: uses all six contacts and provides USB-to-SWD programming.
 
-The wearable main board should be designed first. A charger/dock PCB can be designed afterward if needed.
+The wearable main board and developer/programmer dock both have first-pass tscircuit files now. Treat them as electrical/placement sketches, not fab outputs.
 
 ## tscircuit Project Structure
 
@@ -39,7 +39,7 @@ Use the current repo as the tscircuit project.
 Recommended file direction:
 
 - `index.circuit.tsx`: wearable main board.
-- `charger.circuit.tsx`: optional basic charger or developer dock board if/when needed.
+- `charger.circuit.tsx`: developer/programmer dock board.
 
 For the wearable board schematic, use these sections:
 
@@ -60,12 +60,25 @@ Use these net names consistently in the tscircuit design.
 | Net | Meaning |
 |---|---|
 | `GND` | System ground. |
-| `5V_CHG` | Exposed charger input from magnetic dock. |
-| `5V_PROT` | Protected 5 V charger input after fuse/ESD. |
+| `V5_CHG` | Exposed charger input from magnetic dock. |
+| `V5_PROT` | Protected 5 V charger input after fuse/ESD. |
 | `VBAT` | Single-cell LiPo battery voltage. |
 | `VSYS` | Charger/power-path system output. |
 | `VDD_NRF` | nRF52840 logic/RF supply. |
 | `VDD_IO` | I/O/sensor logic rail. |
+
+### Dock Nets
+
+| Net | Meaning |
+|---|---|
+| `USB_VBUS` | USB-C 5 V input on the dock. |
+| `V3_3_DOCK` | Dock-side RP2040/translator logic rail. |
+| `V5_SWITCH_IN` | Dock 5 V after the input fuse and before the pogo load switch. |
+| `V5_POGO` | Dock 5 V after the current-limited load switch, connected to the pogo power contact. |
+| `VREF_TGT` | Target voltage reference from the wearable. |
+| `POGO_EN` | RP2040 output that enables dock-side pogo 5 V. |
+| `POGO_FAULT_N` | TPS2553 fault signal back to the RP2040. |
+| `RP_SWDIO_DIR` | RP2040 output controlling SWDIO translator direction. |
 
 ### Programming Nets
 
@@ -111,7 +124,7 @@ Initial logical pinout:
 | Pin | Net | Purpose |
 |---|---|---|
 | 1 | `GND` | Charge/program ground. |
-| 2 | `5V_CHG` | Charger input. |
+| 2 | `V5_CHG` | Charger input. |
 | 3 | `SWDIO` | Firmware upload. |
 | 4 | `SWDCLK` | Firmware upload. |
 | 5 | `RESET_N` | Programmer reset control. |
@@ -120,12 +133,14 @@ Initial logical pinout:
 Initial physical layout for tscircuit:
 
 ```text
-P1 GND      P2 5V_CHG
+P1 GND      P2 V5_CHG
 P3 SWDIO    P4 SWDCLK
 P5 RESET_N  P6 VREF
 ```
 
-The actual pad size, spacing, height/profile, and keying are mechanical decisions. The first board can use placeholder rectangular pads, for example 1.2 mm x 2.0 mm pads on a 2.0 mm pitch, then revise after charger geometry is chosen.
+The actual pad size, spacing, height/profile, and keying are mechanical decisions. The first board can use placeholder rectangular pads, then revise after charger geometry is chosen.
+
+Wearable-side contacts should be exposed contact pads, not normal paste-aperture SMT pads. Manufacturing notes should call out ENIG or hard-gold finish, no solder paste on exposed contacts, controlled solder-mask openings, and final spacing review for sweat/water exposure.
 
 The final charger/device interface should preserve this stackup intent:
 
@@ -146,7 +161,7 @@ Current first-board assumption: use a protected 1S LiPo pack or protected cell. 
 Preferred main power flow:
 
 ```text
-J_POGO 5V_CHG
+J_POGO V5_CHG
   -> input fuse
   -> input ESD / protection
   -> BQ21061 charger/power path
@@ -162,6 +177,29 @@ Protected LiPo pack
 Use `VSYS` as the main system rail unless the final BQ21061 reference design requires a different naming/connection detail.
 
 Expose `VREF` from the MCU logic supply used by SWD. For the first board, tie `VREF` to `VDD_NRF`.
+
+The dock must not present raw always-on 5 V directly to the wearable contact face. Use a dock-side current-limited load switch path:
+
+```text
+USB_VBUS
+  -> resettable input fuse
+  -> TPS2553 current-limited load switch
+  -> V5_POGO contact
+```
+
+Default first-pass behavior: keep `POGO_EN` pulled down so `V5_POGO` is off until the dock intentionally enables it. Feed the switch fault output back to the RP2040.
+
+## nRF52840 Support Network
+
+The wearable tscircuit sketch includes the nRF52840 regulator/reference network shape:
+
+- `VDDH` from `VSYS`.
+- `DCCH` through `L_NRF_REG0` to `VDD_NRF`.
+- `DCC` through `L_NRF_REG1` to the shared `DEC4`/`DEC6` node.
+- Dedicated `DEC1`, `DEC2`, `DEC3`, `DEC4`/`DEC6`, `DEC5`, and `DECUSB` capacitors.
+- Local bulk and high-frequency decoupling on `VDD_NRF`.
+
+Before fab, verify the exact inductor values, capacitor values, and part numbers against the selected Nordic reference schematic and final regulator mode.
 
 ## Wearable Components
 
@@ -183,8 +221,8 @@ These are the parts to use for the first wearable PCB unless a footprint/import 
 | `TH1` | Battery thermistor | `NCP15XH103F03RC` | `C77131` | `NCP15XH103F03RC` | Connect to charger temperature input. |
 | `SW1` | Button | `KSC241GLFS` | `C221730` | `KSC241GLFS` | Wake/action button. |
 | `D_ESD1` | 4-channel ESD | `TPD4E05U06DQAR` | `C138714` | `TPD4E05U06DQAR` | Protect SWD/debug/contact lines. |
-| `D_ESD2` | 5 V input ESD | `PESD5V0S1BBN` | `C314264` | `PESD5V0S1BBN` | Protect exposed `5V_CHG`. |
-| `F1` | Input resettable fuse | `MF-PSMF050X-2` | `C116170` | `MF-PSMF050X-2` | Series protection from `5V_CHG` to `5V_PROT`. |
+| `D_ESD2` | 5 V input ESD | `PESD5V0S1BBN` | `C314264` | `PESD5V0S1BBN` | Protect exposed `V5_CHG`. |
+| `F1` | Input resettable fuse | `MF-PSMF050X-2` | `C116170` | `MF-PSMF050X-2` | Series protection from `V5_CHG` to `V5_PROT`. |
 
 ### Passive / Generic Components
 
@@ -255,7 +293,7 @@ Motor 2 optional footprint:
 
 A basic charger only needs to contact:
 
-- `5V_CHG`
+- `V5_CHG`
 - `GND`
 
 For a rough prototype, this can be a cable/contact assembly. For a repeatable product-style charger, model a tiny charger PCB or flex with:
@@ -273,8 +311,10 @@ Recommended dock architecture:
 
 ```text
 USB-C
-  -> USB/SWD bridge
-  -> level shifting using target VREF
+  -> USB ESD
+  -> RP2040 USB/SWD bridge
+  -> SWD interface referenced to target VREF
+  -> dock-side current-limited V5_POGO switch
   -> magnetic pogo contacts
 ```
 
@@ -287,10 +327,26 @@ Current dock-side component candidates:
 | `U_FLASH` | RP2040 flash | `W25Q16JVSNIQ` | `C2456211` | `W25Q16JVSNIQ` | Required RP2040 external flash. |
 | `U_LDO` | Dock 3.3 V regulator | `AP2112K-3.3TRG1` | `C51118` | `AP2112K-3.3` | Dock-side logic rail. |
 | `D_USB_ESD` | USB ESD | `USBLC6-2P6` | `C15999` | `USBLC6-2P6` | Protect USB D+/D-. |
-| `U_LVL` | SWD level shifting | `SN74LVC2T45DCUR` | `C15741` | `SN74LVC2T45DCUR` | Respect wearable `VREF` on SWD lines. |
+| `U_LVL_SWDIO` | SWDIO level shifting | `SN74AXC1T45DCKR` | TBD | `SN74AXC1T45DCKR` | Single-bit translator with RP2040-controlled direction for SWDIO turnaround. |
+| `U_LVL_SWCLK` | SWCLK level shifting | `SN74AXC1T45DCKR` | TBD | `SN74AXC1T45DCKR` | Single-bit translator with fixed dock-to-target direction. |
+| `Q_RESET_OD` | Target reset pulldown | `L2N7002SLLT1G` | TBD | `L2N7002SLLT1G` | Open-drain-style reset pull to target ground. |
+| `U_POGO_SW` | Pogo 5 V load switch | `TPS2553DBVR` | TBD | `TPS2553DBVR` | Current-limited switch for exposed dock power contact. |
+| `JP_BOOTSEL` | RP2040 recovery service pads | custom two-pad jumper | N/A | custom footprint | Short to enter RP2040 BOOTSEL recovery. |
+| `JP_RUN` | RP2040 reset service pads | custom two-pad jumper | N/A | custom footprint | Short to reset/recover the dock controller. |
 | `J_POGO_DOCK` | Recessed pogo contact assembly | Harwin P70 or Mill-Max spring contacts | N/A | custom footprint | Charger-side spring contacts recessed inside a premium magnetic connector head. |
 
-Design the wearable board first. Create the dock board after the wearable pad pitch and layout are stable.
+SWD direction handling:
+
+- `SWCLK` is dock-to-target only.
+- `SWDIO` is bidirectional and needs explicit direction control from the RP2040.
+- `RESET_N_TGT` should be pulled low through `Q_RESET_OD`, not driven high by the dock.
+- `VREF_TGT` powers the target side of the SWD translators so the dock respects the wearable logic level.
+
+Dock recovery:
+
+- RP2040 flash has a pull-up on chip select and local decoupling.
+- BOOTSEL and RUN are exposed as compact service pads, not full pushbuttons.
+- USB-C shell pins are tied to dock ground in the tscircuit sketch.
 
 ## Open Electronics Decisions
 
@@ -299,4 +355,7 @@ Design the wearable board first. Create the dock board after the wearable pad pi
 - Exact battery pack/cell and whether it includes protection.
 - One or two populated motors in the first assembled prototype.
 - Motor solder pads versus small motor connectors.
-- Whether the first charger artifact is only a contact cable or a modeled charger PCB.
+- Exact USB-C connector manufacturer part number for the dock.
+- Exact TPS2553 current-limit setting after choosing charge current, contact rating, and cable/USB power budget.
+- Final nRF52840 regulator-mode reference values and inductor/capacitor part numbers.
+- Final exposed-contact finish, solder-mask geometry, and no-paste fabrication instructions.

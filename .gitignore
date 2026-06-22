@@ -37,6 +37,7 @@
 !*.tsx
 !src/
 !tools/
+!imports/
 !.agents/
 !.agents/**
 !.specs/
