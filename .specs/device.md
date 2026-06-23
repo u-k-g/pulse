@@ -6,6 +6,8 @@ Build a wrist-worn device whose primary job is to wake the wearer with aggressiv
 
 The device is alarm-first. The current product is a sealed, headless wrist-worn alarm device with strong vibration, phone-based setup, and a magnetic contact-based charging interface.
 
+Maximum outer envelope is 34.7 mm long x 24 mm wide x 10.6 mm tall. Preferred target envelope is about 10% smaller: roughly 31.2 mm long x 21.6 mm wide x 9.5 mm tall, if the electronics, battery, motor, sealing, and charger interface can fit without compromising the wake vibration strength.
+
 The device must:
 
 - Be worn on the wrist.
@@ -20,6 +22,7 @@ The device must:
 ## Product Priorities
 
 - Wake-up strength matters more than refined haptic feel.
+- Use a vibration approach that feels forceful enough to wake the wearer, even if it feels less refined than premium smartwatch haptics.
 - The wearable body should stay sealed and clean.
 - Charging should feel like a polished consumer product.
 - The magnetic charger should hide the spring contacts in a recessed, premium-feeling connector head rather than looking like exposed hobby pogo pins.
@@ -29,6 +32,4 @@ The device must:
 ## Open Product Decisions
 
 - Exact battery life target.
-- Exact battery capacity and physical cell size.
-- Whether the first prototype uses one vibration motor or two.
 - Exact magnetic charger/dock physical geometry.

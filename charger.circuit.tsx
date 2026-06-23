@@ -58,7 +58,18 @@ export default () => (
     <schematicsection name="Debug_Bridge" displayName="Debug Bridge" />
     <schematicsection name="Target_Interface" displayName="Target Interface" />
 
-    <connector name="J_USB" standard="usb_c" pcbX="-27mm" pcbY="0mm" pcbRotation={270} schX={-10} schY={0} schSectionName="USB_Power" />
+    <connector
+      name="J_USB"
+      standard="usb_c"
+      manufacturerPartNumber="USB4105-GF-A"
+      supplierPartNumbers={{ jlcpcb: ["C3020560"] }}
+      pcbX="-27mm"
+      pcbY="0mm"
+      pcbRotation={270}
+      schX={-10}
+      schY={0}
+      schSectionName="USB_Power"
+    />
     <USBLC6_2P6 name="D_USB_ESD" pcbX="-19.2mm" pcbY="-4.8mm" schX={-6} schY="-1.8" schSectionName="USB_Power" />
     <AP2112K_3_3TRG1 name="U_LDO" pcbX="-17.2mm" pcbY="4.2mm" schX={-6} schY={2.2} schSectionName="USB_Power" />
     <resistor name="R_CC1" resistance="5.1k" footprint="0402" pcbX="-22.4mm" pcbY="7.5mm" schX={-8.4} schY={2.9} schSectionName="USB_Power" />
@@ -73,7 +84,7 @@ export default () => (
     <capacitor name="C_POGO_SW_IN" capacitance="100nF" footprint="0402" pcbX="8.4mm" pcbY="5.5mm" schX={8.8} schY={2.0} schOrientation="vertical" schSectionName="USB_Power" />
     <capacitor name="C_POGO_VBUS" capacitance="1uF" footprint="0402" pcbX="15.5mm" pcbY="5.6mm" schX={12.8} schY={3.2} schOrientation="vertical" schSectionName="USB_Power" />
 
-    <RP2040 name="U_DBG" pcbX="-5.8mm" pcbY="0mm" schX={0} schY={0} schSectionName="Debug_Bridge" />
+    <RP2040 name="U_DBG" pcbX="-5.8mm" pcbY="0mm" schX={0} schY={0} schWidth={2.4} schHeight={6.2} schSectionName="Debug_Bridge" />
     <W25Q16JVSNIQ name="U_FLASH" pcbX="3.4mm" pcbY="-3.3mm" schX={4} schY="-2.2" schSectionName="Debug_Bridge" />
     <capacitor name="C_DBG_BULK" capacitance="4.7uF" footprint="0603" pcbX="-0.8mm" pcbY="7.1mm" schX={4.4} schY={3.2} schOrientation="vertical" schSectionName="Debug_Bridge" />
     <capacitor name="C_DBG_VREG" capacitance="1uF" footprint="0402" pcbX="-4.1mm" pcbY="7.1mm" schX={2.3} schY={3.2} schOrientation="vertical" schSectionName="Debug_Bridge" />
@@ -84,7 +95,7 @@ export default () => (
     <capacitor name="C_DBG_RUN" capacitance="100nF" footprint="0402" pcbX="1.2mm" pcbY="-8.7mm" schX={3.5} schY={-3.8} schOrientation="vertical" schSectionName="Debug_Bridge" />
     <capacitor name="C_DBG_CORE1" capacitance="100nF" footprint="0402" pcbX="-7.0mm" pcbY="7.8mm" schX={-1.2} schY={4.2} schOrientation="vertical" schSectionName="Debug_Bridge" />
     <capacitor name="C_DBG_CORE2" capacitance="100nF" footprint="0402" pcbX="-9.4mm" pcbY="7.8mm" schX={-2.7} schY={4.2} schOrientation="vertical" schSectionName="Debug_Bridge" />
-    <capacitor name="C_DBG_AVDD" capacitance="100nF" footprint="0402" pcbX="1.4mm" pcbY="5.2mm" schX={6.3} schY={2.2} schOrientation="vertical" schSectionName="Debug_Bridge" />
+    <capacitor name="C_DBG_AVDD" capacitance="100nF" footprint="0402" pcbX="1.4mm" pcbY="5.2mm" schX={6.53} schY={3.0} schOrientation="vertical" schSectionName="Debug_Bridge" />
     <capacitor name="C_FLASH_VCC" capacitance="100nF" footprint="0402" pcbX="7.2mm" pcbY="-8.2mm" schX={5.7} schY={-2.2} schOrientation="vertical" schSectionName="Debug_Bridge" />
     <resistor name="R_FLASH_CS" resistance="10k" footprint="0402" pcbX="4.5mm" pcbY="1.4mm" schX={5.7} schY={-3.2} schSectionName="Debug_Bridge" />
     <TwoPadServiceJumper name="JP_BOOTSEL" pcbX="3.5mm" pcbY="-9.15mm" schX={4.6} schY={-4.6} schSectionName="Debug_Bridge" />
@@ -93,13 +104,15 @@ export default () => (
     <SN74AXC1T45DCKR name="U_LVL_SWDIO" pcbX="7.2mm" pcbY="2.4mm" schX={8} schY={0.9} schSectionName="Target_Interface" />
     <SN74AXC1T45DCKR name="U_LVL_SWCLK" pcbX="8.2mm" pcbY="-1.0mm" schX={8} schY={-0.9} schSectionName="Target_Interface" />
     <L2N7002SLLT1G name="Q_RESET_OD" pcbX="15.0mm" pcbY="-5.4mm" schX={8} schY={-2.7} schSectionName="Target_Interface" />
-    <resistor name="R_RESET_GATE_PD" resistance="100k" footprint="0402" pcbX="12.0mm" pcbY="-5.4mm" schX={6.0} schY={-2.7} schSectionName="Target_Interface" />
+    <resistor name="R_RESET_GATE_PD" resistance="100k" footprint="0402" pcbX="12.0mm" pcbY="-5.4mm" schX={6.95} schY={-3.35} schSectionName="Target_Interface" />
     <resistor name="R_SWCLK_SER" resistance="47" footprint="0402" pcbX="13.4mm" pcbY="-2.2mm" schX={10.0} schY={-0.9} schSectionName="Target_Interface" />
     <resistor name="R_SWDIO_SER" resistance="47" footprint="0402" pcbX="13.4mm" pcbY="1.2mm" schX={10.0} schY={0.9} schSectionName="Target_Interface" />
     <capacitor name="C_LVL_3V3" capacitance="100nF" footprint="0402" pcbX="4.5mm" pcbY="5.5mm" schX={6.0} schY={1.9} schOrientation="vertical" schSectionName="Target_Interface" />
     <capacitor name="C_VREF_TGT" capacitance="100nF" footprint="0402" pcbX="6.4mm" pcbY="5.5mm" schX={11.7} schY={1.9} schOrientation="vertical" schSectionName="Target_Interface" />
-    <DockPogoContacts name="J_POGO_DOCK" pcbX="23.5mm" pcbY="0mm" schX={13} schY={0} schSectionName="Target_Interface" />
+    <DockPogoContacts name="J_POGO_DOCK" pcbX="23.5mm" pcbY="0mm" schX={13} schY={0} schWidth={2.4} schHeight={1.2} schSectionName="Target_Interface" />
     <fabricationnotetext text="RECESSED SPRING POGO FACE; POWER ENABLED BY TPS2553 ONLY" pcbX="18.2mm" pcbY="-8.6mm" fontSize="0.7mm" anchorAlignment="center" />
+    <fabricationnotetext text="TPS2553 ILIM 49.9K: ABOUT 520MA TYP POGO CURRENT LIMIT" pcbX="10.5mm" pcbY="9.1mm" fontSize="0.7mm" anchorAlignment="center" />
+    <fabricationnotetext text="J_USB TARGET: GCT USB4105-GF-A / JLC C3020560" pcbX="-20.5mm" pcbY="-8.7mm" fontSize="0.7mm" anchorAlignment="center" />
 
     <hole name="H_MAG1" pcbX="19.1mm" pcbY="6.1mm" diameter="2.2mm" />
     <hole name="H_MAG2" pcbX="19.1mm" pcbY="-6.1mm" diameter="2.2mm" />

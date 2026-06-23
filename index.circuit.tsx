@@ -80,7 +80,7 @@ export default () => (
     <schematicsection name="Motion_Button" displayName="Motion / Button" />
     <schematicsection name="Charge_Program_Interface" displayName="Charge / Program Interface" />
 
-    <SixPadPogo name="J_POGO" pcbX="-25mm" pcbY="0mm" schX={-14} schY={0} schSectionName="Charge_Program_Interface" />
+    <SixPadPogo name="J_POGO" pcbX="-25mm" pcbY="0mm" schX={-14} schY={0} schWidth={2.2} schHeight={1.2} schSectionName="Charge_Program_Interface" />
     <MF_PSMF050X_2 name="F1" pcbX="-20.2mm" pcbY="4.8mm" schX={-10} schY={2} schSectionName="Charge_Program_Interface" />
     <PESD5V0S1BBN name="D_ESD_V5" pcbX="-20.2mm" pcbY="1.8mm" schX={-10} schY={0} schSectionName="Charge_Program_Interface" />
     <TPD4E05U06DQAR name="D_ESD_SWD" pcbX="-20.2mm" pcbY="-2.4mm" schX={-10} schY={-2} schSectionName="Charge_Program_Interface" />
@@ -94,9 +94,9 @@ export default () => (
     <NX2016SA_32MHZ_STD_CZS_5 name="Y1_32M" pcbX="5.8mm" pcbY="-5.1mm" schX={8.5} schY={-2} schSectionName="MCU_RF" />
     <ABS07_32_768KHZ_T name="Y2_32K" pcbX="5.8mm" pcbY="5.2mm" schX={8.5} schY={2} schSectionName="MCU_RF" />
     <A_2450AT18B100E name="ANT1" pcbX="25.8mm" pcbY="0mm" pcbRotation={90} schX={13} schY={0} schSectionName="MCU_RF" />
-    <capacitor name="C_RF_SHUNT1" capacitance="0.8pF" footprint="0402" pcbX="14.8mm" pcbY="-1.4mm" schX={10.8} schY={-1} schSectionName="MCU_RF" />
-    <inductor name="L_RF_SERIES" inductance="3.9nH" footprint="0402" pcbX="17mm" pcbY="0mm" schX={10.8} schY={0} schSectionName="MCU_RF" />
-    <capacitor name="C_RF_SHUNT2" capacitance="DNP" footprint="0402" pcbX="19.3mm" pcbY="-1.4mm" schX={10.8} schY={1} schSectionName="MCU_RF" doNotPlace />
+    <capacitor name="C_RF_SHUNT1" capacitance="0.8pF" footprint="0402" pcbX="14.8mm" pcbY="-1.4mm" schX={10.8} schY={-1} schOrientation="vertical" schSectionName="MCU_RF" />
+    <inductor name="L_RF_SERIES" inductance="4.7nH" footprint="0402" pcbX="17mm" pcbY="0mm" schX={10.8} schY={0} schSectionName="MCU_RF" />
+    <capacitor name="C_RF_SHUNT2" capacitance="DNP" footprint="0402" pcbX="19.3mm" pcbY="-1.4mm" schX={10.8} schY={1} schOrientation="vertical" schSectionName="MCU_RF" doNotPlace />
     <pcbnoterect pcbX="25.5mm" pcbY="0mm" width="7mm" height="12mm" strokeWidth="0.15mm" color="#d97706" />
     <fabricationnotetext text="ANTENNA KEEPOUT: NO COPPER / METAL / MOTOR ROUTES" pcbX="18.8mm" pcbY="-7.1mm" fontSize="0.7mm" anchorAlignment="center" />
 
@@ -104,42 +104,46 @@ export default () => (
     <KSC241GLFS name="SW1" pcbX="-16.5mm" pcbY="-9.3mm" schX={6} schY={7.2} schSectionName="Motion_Button" />
 
     <DRV8212PDSGR name="U_MOT1" pcbX="10.8mm" pcbY="8.3mm" schX={-1.6} schY={-7} schSectionName="Vibration" />
-    <TwoPadConnector name="J_MOT1" pcbX="17.2mm" pcbY="10.6mm" schX={2.8} schY={-7} schSectionName="Vibration" />
+    <TwoPadConnector name="J_MOT1" pcbX="17.2mm" pcbY="10.6mm" schX={3.33} schY={-7.35} schSectionName="Vibration" />
     <DRV8212PDSGR name="U_MOT2" pcbX="10.8mm" pcbY="-8.3mm" schX={-1.6} schY={-10} schSectionName="Vibration" />
     <TwoPadConnector name="J_MOT2" pcbX="17.2mm" pcbY="-10.6mm" schX={2.8} schY={-10} schSectionName="Vibration" />
 
-    <capacitor name="C_IN" capacitance="1uF" footprint="0402" pcbX="-17.1mm" pcbY="7.2mm" schX={-6.2} schY={4.2} schSectionName="Power" />
-    <capacitor name="C_PMID" capacitance="22uF" footprint="0805" pcbX="-13.9mm" pcbY="10.6mm" schX={-2} schY={3.2} schSectionName="Power" />
-    <capacitor name="C_BAT" capacitance="1uF" footprint="0402" pcbX="-4mm" pcbY="9.1mm" schX={-0.2} schY={4.2} schSectionName="Power" />
-    <capacitor name="C_CHG_VDD" capacitance="2.2uF" footprint="0402" pcbX="-11.2mm" pcbY="6.6mm" schX={-2.4} schY={1} schSectionName="Power" />
-    <capacitor name="C_NRF_BULK" capacitance="4.7uF" footprint="0603" pcbX="-9.7mm" pcbY="-3.9mm" schX={2.8} schY={-4.2} schSectionName="MCU_RF" />
-    <capacitor name="C_NRF_DEC1" capacitance="100nF" footprint="0402" pcbX="-9.7mm" pcbY="-1.7mm" schX={4.1} schY={-4.2} schSectionName="MCU_RF" />
-    <capacitor name="C_NRF_DEC2" capacitance="100nF" footprint="0402" pcbX="-9.7mm" pcbY="-0.3mm" schX={5.4} schY={-4.2} schSectionName="MCU_RF" />
-    <capacitor name="C_NRF_VDD_1U" capacitance="1uF" footprint="0402" pcbX="-9.7mm" pcbY="1.1mm" schX={6.7} schY={-4.2} schSectionName="MCU_RF" />
-    <inductor name="L_NRF_REG0" inductance="10uH" footprint="0402" pcbX="-0.4mm" pcbY="-8.9mm" schX={3.8} schY={-5.4} schSectionName="MCU_RF" />
-    <inductor name="L_NRF_REG1" inductance="15nH" footprint="0402" pcbX="-5.6mm" pcbY="-6.2mm" schX={5.4} schY={-5.4} schSectionName="MCU_RF" />
+    <capacitor name="C_IN" capacitance="1uF" footprint="0402" pcbX="-17.1mm" pcbY="7.2mm" schX={-6.2} schY={4.2} schOrientation="vertical" schSectionName="Power" />
+    <capacitor name="C_PMID" capacitance="22uF" footprint="0805" pcbX="-13.9mm" pcbY="10.6mm" schX={-2} schY={3.2} schOrientation="vertical" schSectionName="Power" />
+    <capacitor name="C_BAT" capacitance="1uF" footprint="0402" pcbX="-4mm" pcbY="9.1mm" schX={-0.25} schY={4.22} schOrientation="vertical" schSectionName="Power" />
+    <capacitor name="C_CHG_VDD" capacitance="2.2uF" footprint="0402" pcbX="-11.2mm" pcbY="6.6mm" schX={-2.4} schY={1} schOrientation="vertical" schSectionName="Power" />
+    <capacitor name="C_NRF_BULK" capacitance="4.7uF" footprint="0603" pcbX="-9.7mm" pcbY="-3.9mm" schX={2.8} schY={-4.2} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_NRF_DEC1" capacitance="100nF" footprint="0402" pcbX="-9.7mm" pcbY="-1.7mm" schX={4.1} schY={-4.2} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_NRF_DEC2" capacitance="100nF" footprint="0402" pcbX="-9.7mm" pcbY="-0.3mm" schX={5.4} schY={-4.2} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_NRF_VDD_1U" capacitance="1uF" footprint="0402" pcbX="-9.7mm" pcbY="1.1mm" schX={6.7} schY={-4.2} schOrientation="vertical" schSectionName="MCU_RF" />
+    <inductor name="L_NRF_REG0" inductance="10uH" footprint="0603" pcbX="-0.4mm" pcbY="-8.9mm" schX={3.8} schY={-5.4} schSectionName="MCU_RF" />
+    <inductor name="L_NRF_REG1_RF" inductance="15nH" footprint="0402" pcbX="-5.6mm" pcbY="-6.2mm" schX={5.4} schY={-5.4} schSectionName="MCU_RF" />
+    <inductor name="L_NRF_REG1" inductance="10uH" footprint="0603" pcbX="-3.1mm" pcbY="-6.2mm" schX={7.0} schY={-5.4} schSectionName="MCU_RF" />
     <capacitor name="C_DEC1" capacitance="100nF" footprint="0402" pcbX="-7.7mm" pcbY="4.9mm" schX={2.7} schY={-6.6} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_DEC2" capacitance="100nF" footprint="0402" pcbX="-7.7mm" pcbY="6.3mm" schX={4.0} schY={-6.6} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_DEC3" capacitance="100pF" footprint="0402" pcbX="-1.0mm" pcbY="6.9mm" schX={5.3} schY={-6.6} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_DEC4_6" capacitance="1uF" footprint="0402" pcbX="-5.7mm" pcbY="-4.8mm" schX={6.6} schY={-6.6} schOrientation="vertical" schSectionName="MCU_RF" />
-    <capacitor name="C_DEC5" capacitance="1pF" footprint="0402" pcbX="0.9mm" pcbY="5.4mm" schX={7.9} schY={-6.6} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_DEC5" capacitance="47nF" footprint="0402" pcbX="0.9mm" pcbY="5.4mm" schX={7.9} schY={-6.6} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_DECUSB" capacitance="4.7uF" footprint="0402" pcbX="-0.4mm" pcbY="-6.9mm" schX={9.2} schY={-6.6} schOrientation="vertical" schSectionName="MCU_RF" />
-    <capacitor name="C_32M_X1" capacitance="12pF" footprint="0402" pcbX="3.8mm" pcbY="-7.5mm" schX={7.2} schY={-3.3} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_32M_X1" capacitance="12pF" footprint="0402" pcbX="3.8mm" pcbY="-7.5mm" schX={7.52} schY={-3.23} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_32M_X2" capacitance="12pF" footprint="0402" pcbX="7.8mm" pcbY="-7.5mm" schX={9.8} schY={-3.3} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_32K_X1" capacitance="12pF" footprint="0402" pcbX="3.8mm" pcbY="9.3mm" schX={7.2} schY={3.3} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_32K_X2" capacitance="12pF" footprint="0402" pcbX="7.8mm" pcbY="9.3mm" schX={9.8} schY={3.3} schOrientation="vertical" schSectionName="MCU_RF" />
-    <capacitor name="C_MOT1_VM" capacitance="10uF" footprint="0805" pcbX="16.5mm" pcbY="7.2mm" schX={-6.1} schY={-7} schSectionName="Vibration" />
-    <capacitor name="C_MOT1_VCC" capacitance="100nF" footprint="0402" pcbX="6.4mm" pcbY="7.4mm" schX={-6.1} schY={-8.2} schSectionName="Vibration" />
-    <capacitor name="C_MOT2_VM" capacitance="10uF" footprint="0805" pcbX="16.5mm" pcbY="-7.2mm" schX={-6.1} schY={-10} schSectionName="Vibration" />
-    <capacitor name="C_MOT2_VCC" capacitance="100nF" footprint="0402" pcbX="7.4mm" pcbY="-8.6mm" schX={-6.1} schY={-11.2} schSectionName="Vibration" />
+    <capacitor name="C_MOT1_VM" capacitance="10uF" footprint="0805" pcbX="16.5mm" pcbY="7.2mm" schX={-6.1} schY={-7} schOrientation="vertical" schSectionName="Vibration" />
+    <capacitor name="C_MOT1_VCC" capacitance="100nF" footprint="0402" pcbX="6.4mm" pcbY="7.4mm" schX={-6.1} schY={-8.2} schOrientation="vertical" schSectionName="Vibration" />
+    <capacitor name="C_MOT2_VM" capacitance="10uF" footprint="0805" pcbX="16.5mm" pcbY="-7.2mm" schX={-6.1} schY={-10} schOrientation="vertical" schSectionName="Vibration" />
+    <capacitor name="C_MOT2_VCC" capacitance="100nF" footprint="0402" pcbX="7.4mm" pcbY="-8.6mm" schX={-6.1} schY={-11.2} schOrientation="vertical" schSectionName="Vibration" />
     <resistor name="R_I2C_SCL" resistance="4.7k" footprint="0402" pcbX="2.1mm" pcbY="7.4mm" schX={1.8} schY={4.3} schSectionName="Motion_Button" />
-    <resistor name="R_I2C_SDA" resistance="4.7k" footprint="0402" pcbX="4.4mm" pcbY="7.4mm" schX={3.1} schY={4.3} schSectionName="Motion_Button" />
+    <resistor name="R_I2C_SDA" resistance="4.7k" footprint="0402" pcbX="4.4mm" pcbY="7.4mm" schX={4.15} schY={4.21} schSectionName="Motion_Button" />
     <resistor name="R_BTN_PULL" resistance="100k" footprint="0402" pcbX="-8.8mm" pcbY="-11.2mm" schX={8.3} schY={7.2} schSectionName="Motion_Button" />
     <resistor name="R_CHG_PU" resistance="10k" footprint="0402" pcbX="-13.2mm" pcbY="-2.6mm" schX={-3.2} schY={0} schSectionName="Power" />
     <resistor name="R_TS_PAR" resistance="10k" footprint="0402" pcbX="-13.2mm" pcbY="12.2mm" schX={-2.0} schY={7.4} schSectionName="Power" />
     <resistor name="R_RESET_PULL" resistance="100k" footprint="0402" pcbX="-18.8mm" pcbY="-4.8mm" schX={-9.2} schY={-4.3} schSectionName="Charge_Program_Interface" />
     <resistor name="R_VREF_SENSE" resistance="100" footprint="0402" pcbX="-25.2mm" pcbY="-5.8mm" schX={-11.5} schY={-4.3} schSectionName="Charge_Program_Interface" />
     <fabricationnotetext text="POGO CONTACTS: EXPOSED ENIG/HARD-GOLD, NO SOLDER PASTE" pcbX="-16.3mm" pcbY="-12.2mm" fontSize="0.7mm" anchorAlignment="center" />
+    <fabricationnotetext text="PLACEMENT SKETCH: NEXT PCB TARGET ABOUT 28.5MM X 18.5MM" pcbX="0mm" pcbY="-12.2mm" fontSize="0.7mm" anchorAlignment="center" />
+    <fabricationnotetext text="BATTERY: HIGH-RATE LP501230-CLASS 1S LIPO, 3 LEADS WITH 10K NTC" pcbX="-7.6mm" pcbY="12.35mm" fontSize="0.7mm" anchorAlignment="center" />
+    <fabricationnotetext text="M1 MOTOR TARGET: VYBRONICS VZ7AL2B169208T; M2 IS OPTIONAL TEST CHANNEL" pcbX="9.0mm" pcbY="12.3mm" fontSize="0.7mm" anchorAlignment="center" />
 
     <trace from="J_POGO.V5_CHG" to="F1.pin1" />
     <trace from="F1.pin2" to="net.V5_PROT" />
@@ -191,7 +195,8 @@ export default () => (
     <trace from="U_MCU.VSS_PA" to="net.GND" />
     <trace from="U_MCU.DCCH" to="L_NRF_REG0.pin1" />
     <trace from="L_NRF_REG0.pin2" to="net.VDD_NRF" />
-    <trace from="U_MCU.DCC" to="L_NRF_REG1.pin1" />
+    <trace from="U_MCU.DCC" to="L_NRF_REG1_RF.pin1" />
+    <trace from="L_NRF_REG1_RF.pin2" to="L_NRF_REG1.pin1" />
     <trace from="L_NRF_REG1.pin2" to="net.NRF_DEC4_6" />
     <trace from="U_MCU.DEC1" to="net.NRF_DEC1" />
     <trace from="U_MCU.DEC2" to="net.NRF_DEC2" />
