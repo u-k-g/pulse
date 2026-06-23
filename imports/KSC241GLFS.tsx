@@ -11,6 +11,12 @@ export const KSC241GLFS = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        pin1: { requiresPower: true },
+        pin2: { requiresGround: true },
+        pin3: { doNotConnect: true },
+        pin4: { doNotConnect: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C221730"

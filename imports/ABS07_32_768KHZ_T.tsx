@@ -9,6 +9,10 @@ export const ABS07_32_768KHZ_T = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        OSC1: { requiresPower: true },
+        OSC2: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C130253"

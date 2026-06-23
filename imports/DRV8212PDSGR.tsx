@@ -16,6 +16,12 @@ export const DRV8212PDSGR = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        VM: { requiresPower: true },
+        VCC: { requiresPower: true },
+        GND: { requiresGround: true },
+        EP: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C5208051"

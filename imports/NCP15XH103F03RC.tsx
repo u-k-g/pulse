@@ -9,6 +9,10 @@ export const NCP15XH103F03RC = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        pin1: { requiresPower: true },
+        pin2: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C77131"

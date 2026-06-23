@@ -19,6 +19,12 @@ export const LIS2DW12TR = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        VDD: { requiresPower: true },
+        VDDIO: { requiresPower: true },
+        GND1: { requiresGround: true },
+        GND2: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C189624"

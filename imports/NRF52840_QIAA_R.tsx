@@ -81,6 +81,13 @@ export const NRF52840_QIAA_R = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        VDD: { requiresPower: true },
+        VDDH: { requiresPower: true },
+        VBUS: { requiresPower: true },
+        VSS: { requiresGround: true },
+        VSS_PA: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C190794"

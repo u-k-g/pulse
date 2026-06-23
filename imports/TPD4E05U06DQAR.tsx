@@ -17,6 +17,15 @@ export const TPD4E05U06DQAR = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        D1_POS: { requiresPower: true },
+        GND1: { requiresGround: true },
+        GND2: { requiresGround: true },
+        NC1: { doNotConnect: true },
+        NC2: { doNotConnect: true },
+        NC3: { doNotConnect: true },
+        NC4: { doNotConnect: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C138714"

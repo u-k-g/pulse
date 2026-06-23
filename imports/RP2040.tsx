@@ -64,6 +64,20 @@ export const RP2040 = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        IOVDD1: { requiresPower: true },
+        IOVDD2: { requiresPower: true },
+        IOVDD3: { requiresPower: true },
+        IOVDD4: { requiresPower: true },
+        IOVDD5: { requiresPower: true },
+        IOVDD6: { requiresPower: true },
+        USB_VDD: { requiresPower: true },
+        ADC_AVDD: { requiresPower: true },
+        VREG_IN: { requiresPower: true },
+        DVDD1: { requiresPower: true },
+        DVDD2: { requiresPower: true },
+        GND: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C2040"

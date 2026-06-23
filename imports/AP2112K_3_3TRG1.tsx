@@ -12,6 +12,11 @@ export const AP2112K_3_3TRG1 = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        VIN: { requiresPower: true },
+        VOUT: { requiresPower: true },
+        GND: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C23380830"

@@ -27,6 +27,13 @@ export const BQ21061YFPR = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        IN: { requiresPower: true },
+        BAT: { requiresPower: true },
+        VDD: { requiresPower: true },
+        VIO: { requiresPower: true },
+        GND: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C2869893"

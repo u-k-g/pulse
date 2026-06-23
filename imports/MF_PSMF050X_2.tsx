@@ -9,6 +9,10 @@ export const MF_PSMF050X_2 = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        pin1: { requiresPower: true },
+        pin2: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C116170"

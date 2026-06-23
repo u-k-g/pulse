@@ -13,6 +13,11 @@ export const TPS2553DBVR = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        IN: { requiresPower: true },
+        OUT: { requiresPower: true },
+        GND: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C55266"

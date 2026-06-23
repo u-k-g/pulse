@@ -10,6 +10,10 @@ export const L2N7002SLLT1G = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        D: { requiresPower: true },
+        S: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C22446827"

@@ -101,10 +101,10 @@ export default () => (
     <fabricationnotetext text="ANTENNA KEEPOUT: NO COPPER / METAL / MOTOR ROUTES" pcbX="18.8mm" pcbY="-7.1mm" fontSize="0.7mm" anchorAlignment="center" />
 
     <LIS2DW12TR name="U_ACC" pcbX="4.5mm" pcbY="0mm" schX={3.5} schY={7.2} schSectionName="Motion_Button" />
-    <KSC241GLFS name="SW1" pcbX="-16.5mm" pcbY="-9.3mm" schX={5.94} schY={7.2} schSectionName="Motion_Button" />
+    <KSC241GLFS name="SW1" pcbX="-16.5mm" pcbY="-9.3mm" schX={6.8} schY={7.2} schSectionName="Motion_Button" />
 
-    <DRV8212PDSGR name="U_MOT1" pcbX="10.8mm" pcbY="8.3mm" schX={-2.25} schY={-7} schHeight={1} schSectionName="Vibration" />
-    <TwoPadConnector name="J_MOT1" pcbX="17.2mm" pcbY="10.6mm" schX={3.91} schY={-7.35} schSectionName="Vibration" />
+    <DRV8212PDSGR name="U_MOT1" pcbX="10.8mm" pcbY="8.3mm" schX={-2.9} schY={-7} schHeight={1} schSectionName="Vibration" />
+    <TwoPadConnector name="J_MOT1" pcbX="17.2mm" pcbY="10.6mm" schX={5.2} schY={-7.35} schSectionName="Vibration" />
     <DRV8212PDSGR name="U_MOT2" pcbX="10.8mm" pcbY="-8.3mm" schX={-1.6} schY={-10} schHeight={1} schSectionName="Vibration" />
     <TwoPadConnector name="J_MOT2" pcbX="17.2mm" pcbY="-10.6mm" schX={2.8} schY={-10} schSectionName="Vibration" />
 
@@ -120,11 +120,11 @@ export default () => (
     <inductor name="L_NRF_REG1_RF" inductance="15nH" footprint="0402" pcbX="-5.6mm" pcbY="-6.2mm" schX={5.0} schY={-6.9} schSectionName="MCU_RF" />
     <inductor name="L_NRF_REG1" inductance="10uH" footprint="0603" pcbX="-3.1mm" pcbY="-6.2mm" schX={7.0} schY={-6.9} schSectionName="MCU_RF" />
     <capacitor name="C_DEC1" capacitance="100nF" footprint="0402" pcbX="-7.7mm" pcbY="4.9mm" schX={0.99} schY={-8.2} schOrientation="vertical" schSectionName="MCU_RF" />
-    <capacitor name="C_DEC2" capacitance="100nF" footprint="0402" pcbX="-7.7mm" pcbY="6.3mm" schX={3.11} schY={-8.2} schOrientation="vertical" schSectionName="MCU_RF" />
-    <capacitor name="C_DEC3" capacitance="100pF" footprint="0402" pcbX="-2.5mm" pcbY="6.9mm" schX={7.73} schY={-8.2} schOrientation="vertical" schSectionName="MCU_RF" />
-    <capacitor name="C_DEC4_6" capacitance="1uF" footprint="0402" pcbX="-5.7mm" pcbY="-4.8mm" schX={7.6} schY={-8.2} schOrientation="vertical" schSectionName="MCU_RF" />
-    <capacitor name="C_DEC5" capacitance="47nF" footprint="0402" pcbX="0.3mm" pcbY="8.4mm" schX={9.0} schY={-8.2} schOrientation="vertical" schSectionName="MCU_RF" />
-    <capacitor name="C_DECUSB" capacitance="4.7uF" footprint="0402" pcbX="-0.4mm" pcbY="-6.9mm" schX={10.4} schY={-8.2} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_DEC2" capacitance="100nF" footprint="0402" pcbX="-7.7mm" pcbY="6.3mm" schX={3.6} schY={-8.4} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_DEC3" capacitance="100pF" footprint="0402" pcbX="-2.5mm" pcbY="6.9mm" schX={6.1} schY={-8.4} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_DEC4_6" capacitance="1uF" footprint="0402" pcbX="-5.7mm" pcbY="-4.8mm" schX={8.0} schY={-8.4} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_DEC5" capacitance="47nF" footprint="0402" pcbX="0.3mm" pcbY="8.4mm" schX={9.8} schY={-8.4} schOrientation="vertical" schSectionName="MCU_RF" />
+    <capacitor name="C_DECUSB" capacitance="4.7uF" footprint="0402" pcbX="-0.4mm" pcbY="-6.9mm" schX={11.3} schY={-8.4} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_32M_X1" capacitance="12pF" footprint="0402" pcbX="2.9mm" pcbY="-8.6mm" schX={6.8} schY={-3.23} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_32M_X2" capacitance="12pF" footprint="0402" pcbX="7.8mm" pcbY="-7.5mm" schX={9.8} schY={-3.3} schOrientation="vertical" schSectionName="MCU_RF" />
     <capacitor name="C_32K_X1" capacitance="12pF" footprint="0402" pcbX="3.8mm" pcbY="9.3mm" schX={7.2} schY={3.3} schOrientation="vertical" schSectionName="MCU_RF" />
@@ -135,7 +135,7 @@ export default () => (
     <capacitor name="C_MOT2_VCC" capacitance="100nF" footprint="0402" pcbX="7.4mm" pcbY="-8.6mm" schX={-5.87} schY={-11.2} schOrientation="vertical" schSectionName="Vibration" />
     <resistor name="R_I2C_SCL" resistance="4.7k" footprint="0402" pcbX="2.1mm" pcbY="7.4mm" schX={1.8} schY={4.3} schSectionName="Motion_Button" />
     <resistor name="R_I2C_SDA" resistance="4.7k" footprint="0402" pcbX="4.4mm" pcbY="7.4mm" schX={4.15} schY={4.21} schSectionName="Motion_Button" />
-    <resistor name="R_BTN_PULL" resistance="100k" footprint="0402" pcbX="-8.8mm" pcbY="-11.2mm" schX={8.37} schY={7.2} schSectionName="Motion_Button" />
+    <resistor name="R_BTN_PULL" resistance="100k" footprint="0402" pcbX="-8.8mm" pcbY="-11.2mm" schX={9.8} schY={7.2} schSectionName="Motion_Button" />
     <resistor name="R_CHG_PU" resistance="10k" footprint="0402" pcbX="-16.2mm" pcbY="-2.6mm" schX={-4.4} schY={-1} schSectionName="Power" />
     <resistor name="R_TS_PAR" resistance="10k" footprint="0402" pcbX="-13.2mm" pcbY="12.2mm" schX={-2.6} schY={7.4} schSectionName="Power" />
     <resistor name="R_RESET_PULL" resistance="100k" footprint="0402" pcbX="-18.8mm" pcbY="-4.8mm" schX={-9.2} schY={-4.3} schSectionName="Charge_Program_Interface" />
@@ -145,7 +145,7 @@ export default () => (
     <fabricationnotetext text="BATTERY: HIGH-RATE LP501230-CLASS 1S LIPO, 3 LEADS WITH 10K NTC" pcbX="-7.6mm" pcbY="12.35mm" fontSize="0.7mm" anchorAlignment="center" />
     <fabricationnotetext text="M1 MOTOR TARGET: VYBRONICS VZ7AL2B169208T; M2 IS OPTIONAL TEST CHANNEL" pcbX="9.0mm" pcbY="12.3mm" fontSize="0.7mm" anchorAlignment="center" />
 
-    <trace from="J_POGO.V5_CHG" to="F1.pin1" />
+    <trace from="J_POGO.V5_CHG" to="F1.pin1" schDisplayLabel="V5_CHG" />
     <trace from="F1.pin2" to="net.V5_PROT" />
     <trace from="J_POGO.GND" to="net.GND" />
     <trace from="D_ESD_V5.pin1" to="J_POGO.V5_CHG" />
@@ -195,7 +195,7 @@ export default () => (
     <trace from="U_MCU.VSS_PA" to="net.GND" />
     <trace from="U_MCU.DCCH" to="L_NRF_REG0.pin1" />
     <trace from="L_NRF_REG0.pin2" to="net.VDD_NRF" />
-    <trace from="U_MCU.DCC" to="L_NRF_REG1_RF.pin1" />
+    <trace from="U_MCU.DCC" to="L_NRF_REG1_RF.pin1" schDisplayLabel="DCC" />
     <trace from="L_NRF_REG1_RF.pin2" to="L_NRF_REG1.pin1" />
     <trace from="L_NRF_REG1.pin2" to="net.NRF_DEC4_6" />
     <trace from="U_MCU.DEC1" to="net.NRF_DEC1" />
@@ -216,12 +216,12 @@ export default () => (
     <trace from="R_RESET_PULL.pin2" to="net.VDD_NRF" />
     <trace from="R_VREF_SENSE.pin1" to="net.VREF_PAD" />
     <trace from="R_VREF_SENSE.pin2" to="net.VDD_NRF" />
-    <trace from="Y1_32M.X1" to="U_MCU.XC1" />
-    <trace from="Y1_32M.X2" to="U_MCU.XC2" />
+    <trace from="Y1_32M.X1" to="U_MCU.XC1" schDisplayLabel="XC1" />
+    <trace from="Y1_32M.X2" to="U_MCU.XC2" schDisplayLabel="XC2" />
     <trace from="Y1_32M.GND1" to="net.GND" />
     <trace from="Y1_32M.GND2" to="net.GND" />
-    <trace from="Y2_32K.OSC1" to="U_MCU.P0_00_XL1" />
-    <trace from="Y2_32K.OSC2" to="U_MCU.P0_01_XL2" />
+    <trace from="Y2_32K.OSC1" to="U_MCU.P0_00_XL1" schDisplayLabel="XL1" />
+    <trace from="Y2_32K.OSC2" to="U_MCU.P0_01_XL2" schDisplayLabel="XL2" />
     <trace from="C_32M_X1.pin1" to="U_MCU.XC1" />
     <trace from="C_32M_X1.pin2" to="net.GND" />
     <trace from="C_32M_X2.pin1" to="U_MCU.XC2" />
@@ -230,10 +230,10 @@ export default () => (
     <trace from="C_32K_X1.pin2" to="net.GND" />
     <trace from="C_32K_X2.pin1" to="U_MCU.P0_01_XL2" />
     <trace from="C_32K_X2.pin2" to="net.GND" />
-    <trace from="U_MCU.ANT" to="C_RF_SHUNT1.pin1" />
+    <trace from="U_MCU.ANT" to="C_RF_SHUNT1.pin1" schDisplayLabel="ANT" />
     <trace from="C_RF_SHUNT1.pin1" to="L_RF_SERIES.pin1" />
     <trace from="C_RF_SHUNT1.pin2" to="net.GND" />
-    <trace from="L_RF_SERIES.pin2" to="C_RF_SHUNT2.pin1" />
+    <trace from="L_RF_SERIES.pin2" to="C_RF_SHUNT2.pin1" schDisplayLabel="ANT_FEED" />
     <trace from="C_RF_SHUNT2.pin1" to="ANT1.FEED" />
     <trace from="C_RF_SHUNT2.pin2" to="net.GND" />
 
@@ -266,19 +266,19 @@ export default () => (
     <trace from="U_MOT1.VCC" to="net.VDD_NRF" />
     <trace from="U_MOT1.GND" to="net.GND" />
     <trace from="U_MOT1.EP" to="net.GND" />
-    <trace from="U_MOT1.IN1" to="U_MCU.P0_15" />
-    <trace from="U_MOT1.IN2" to="U_MCU.P0_16" />
+    <trace from="U_MOT1.IN1" to="U_MCU.P0_15" schDisplayLabel="M1_IN1" />
+    <trace from="U_MOT1.IN2" to="U_MCU.P0_16" schDisplayLabel="M1_IN2" />
     <trace from="U_MOT1.nSLEEP" to="net.VDD_NRF" />
-    <trace from="U_MOT1.OUT1" to="J_MOT1.P" width="0.35mm" />
-    <trace from="U_MOT1.OUT2" to="J_MOT1.N" width="0.35mm" />
+    <trace from="U_MOT1.OUT1" to="J_MOT1.P" width="0.35mm" schDisplayLabel="M1_P" />
+    <trace from="U_MOT1.OUT2" to="J_MOT1.N" width="0.35mm" schDisplayLabel="M1_N" />
     <trace from="U_MOT2.VM" to="net.VSYS" width="0.35mm" />
     <trace from="U_MOT2.VCC" to="net.VDD_NRF" />
     <trace from="U_MOT2.GND" to="net.GND" />
     <trace from="U_MOT2.EP" to="net.GND" />
-    <trace from="U_MOT2.IN1" to="U_MCU.P0_17" />
-    <trace from="U_MOT2.IN2" to="U_MCU.P0_19" />
+    <trace from="U_MOT2.IN1" to="U_MCU.P0_17" schDisplayLabel="M2_IN1" />
+    <trace from="U_MOT2.IN2" to="U_MCU.P0_19" schDisplayLabel="M2_IN2" />
     <trace from="U_MOT2.nSLEEP" to="net.VDD_NRF" />
-    <trace from="U_MOT2.OUT1" to="J_MOT2.P" width="0.35mm" />
+    <trace from="U_MOT2.OUT1" to="J_MOT2.P" width="0.35mm" schDisplayLabel="M2_P" />
     <trace from="U_MOT2.OUT2" to="J_MOT2.N" width="0.35mm" />
 
     <trace from="C_IN.pin1" to="net.V5_PROT" />

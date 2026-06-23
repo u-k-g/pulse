@@ -15,6 +15,10 @@ export const W25Q16JVSNIQ = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        VCC: { requiresPower: true },
+        GND: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C2456211"

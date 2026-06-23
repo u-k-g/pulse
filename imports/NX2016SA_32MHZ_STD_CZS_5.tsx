@@ -11,6 +11,11 @@ export const NX2016SA_32MHZ_STD_CZS_5 = (props: ChipProps<typeof pinLabels>) => 
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        X1: { requiresPower: true },
+        GND1: { requiresGround: true },
+        GND2: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C843260"

@@ -9,6 +9,10 @@ export const A_2450AT18B100E = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        FEED: { requiresPower: true },
+        NC: { requiresGround: true, doNotConnect: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C2917717"

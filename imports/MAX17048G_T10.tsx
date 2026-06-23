@@ -16,6 +16,11 @@ export const MAX17048G_T10 = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        VDD: { requiresPower: true },
+        CELL: { requiresPower: true },
+        GND: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C2682616"

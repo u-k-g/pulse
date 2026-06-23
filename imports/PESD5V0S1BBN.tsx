@@ -9,6 +9,10 @@ export const PESD5V0S1BBN = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        pin1: { requiresPower: true },
+        pin2: { requiresGround: true },
+      }}
       supplierPartNumbers={{
   "jlcpcb": [
     "C314264"
